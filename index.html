@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="icon" href="resources/icon2.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css"/>
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <nav class="nav">
+        <ul class="nav-elements">
+            <li>
+                <img src="resources/razer.png" alt="" class="logo">
+            </li>
+            <li class="menu">
+                <button class="a button" id="agregar">Agregar</button>
+                <button class="a button" id="tareas">Tareas</button>
+                <span>
+                    <details class="button" id="delete-label">
+                        <summary class="a">Eliminar datos</summary>
+                        <ul class="delete">
+                            <li id="delete-one">Un dato.</li>
+                            <li id="delete-all">Todos los datos.</li>
+                            <li id="cancel" class="quite">Cancelar.</li>
+                        </ul>
+                    </details>
+                </span>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section class="insert-data" id="insert-data">
+            <form class="form">
+                
+                <legend style="text-align: center; width: 100%;">
+                    <img src="resources/list.png" alt="" class="legend">
+                </legend>
+              <h2>Completa la información.</h2>
+              <label for="title">Título:</label>
+              <input type="text" id="title" class="input" autocomplete="off" minlength="2" required autofocus/>
+              <label for="time">Hora:</label>
+              <input type="time" id="time" class="input hora" required/>
+              <label for="priority">Prioridad:</label>
+              <div class="radio">
+                  <div>
+                    <label for="alto">Alta</label>
+                    <input type="radio" name="priority">  
+                  </div>
+                  <div>
+                      <input type="radio" name="priority">
+                      <label for="medio">Media</label>
+                  </div>
+                  <div>    
+                      <input type="radio" name="priority">
+                      <label for="bajo">Baja</label>
+                  </div>
+              </div>
+      
+              <label for="descripcion">Descripción:</label>
+              <textarea id="descripcion" cols="50" rows="100" class="textarea" minlength="2" required></textarea>
+              
+              <button type="button" id="submit" class="submit button">
+                  Agregar tarea.
+              </button>
+      
+            </form>
+          </section>
+      
+          <section class="show-data quite" id="tasks">
+              <div class="header">
+                <h2>Tareas pendientes.</h2>
+                <select name="order" id="order" class="order">
+                    <option>Orden de ingreso</option>
+                    <option>Orden por tiempo</option>
+                    <option>Más importante a menos</option>
+                    <option>Menos importante a más</option>
+                    <option>Solo altas</option>
+                    <option>Solo medias</option>
+                    <option>Solo bajas</option>
+                  </select>
+                <legend>
+                    <img src="resources/list.png" alt="" class="legend2">
+                </legend>
+              </div>
+            <div class="tasks" id="add-task">
+                
+            </div>
+          </section>
+    </main>
+
+
+    <!--Alerts-->
+    <div class="correct quite" id="correct-alert">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+        </svg>
+        <p class="success">Tarea agregada correctamente.</p>
+        <button class="button" id="ok-correct">Ok</button>
+    </div>
+
+    <div class="wrong quite" id="wrong-alert">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+        </svg>
+        <p class="error">Error. Por favor completa todos los campos.</p>
+        <button class="button" id="ok-wrong">Ok</button>
+    </div>
+
+    <div class="question quite" id="question-alert">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTU3LjM0NCA2Ny4zMzloLTEyLjNsLTggMTAtOC0xMGgtMTIuMjk0YTE1IDE1IDAgMCAxIC0xNS0xNXYtMjcuMTIyYTE1IDE1IDAgMCAxIDE1LTE1aDQwLjU5NGExNSAxNSAwIDAgMSAxNSAxNXYyNy4xMjJhMTUgMTUgMCAwIDEgLTE1IDE1eiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzRkNTY4MCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxnIGZpbGw9IiM4MGEzZmYiPjxwYXRoIGQ9Im00MS4wNDcgNDcuMjMxaC04di0xMy4zMzFoNGE0LjMzNiA0LjMzNiAwIDEgMCAtNC4zMzYtNC4zMzZoLThhMTIuMzM2IDEyLjMzNiAwIDEgMSAxNi4zMzYgMTEuNjd6IiBmaWxsPSIjMDA2Mzk3IiBkYXRhLW9yaWdpbmFsPSIjODBhM2ZmIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PHBhdGggZD0ibTMzLjA0NyA1My42NjFoOHY3LjU2M2gtOHoiIGZpbGw9IiMwMDYzOTciIGRhdGEtb3JpZ2luYWw9IiM4MGEzZmYiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PHBhdGggZD0ibTExMS4yNSA1MC42NjFoLTM4LjkwNnYxLjY3OGExNSAxNSAwIDAgMSAtMTUgMTVoLTEuNjg4djI1LjQ0NGExNSAxNSAwIDAgMCAxNSAxNWgxMi4zbDggMTAgOC0xMGgxMi4zYTE1IDE1IDAgMCAwIDE1LTE1di0yNy4xMjJhMTUgMTUgMCAwIDAgLTE1LjAwNi0xNXoiIGZpbGw9IiMwMjU5ODciIGRhdGEtb3JpZ2luYWw9IiNmZjY2ODAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48ZyBmaWxsPSIjZmZkODMwIj48cGF0aCBkPSJtODYuOTUzIDYwLjcyMmg4djcuNTYzaC04eiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iI2ZmZDgzMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPjxwYXRoIGQ9Im04Ni45NTMgNzUuMTZoOHYyMi41NjNoLTh6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjZmZkODMwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+PC9nPjwvZz48L2c+PC9zdmc+" />
+        <p class="pregunta">¿Está seguro de eliminar el/los registro/s?.</p>
+        <div>
+            <button class="button" id="btn-question-yes">Sí</button>
+            <button class="button" id="btn-question-no">No</button>
+        </div>
+    </div>
+
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

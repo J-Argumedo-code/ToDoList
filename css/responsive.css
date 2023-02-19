@@ -1,0 +1,70 @@
+@media screen and (max-width: 575.9px){
+    .nav{
+        height: 15vh;
+    }
+    .navElements{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo{
+        width: 170px;
+        height: 85px;
+    }
+    main{
+        height: 85vh;
+    }
+    .insert-data, .show-data{
+        height: 70vh;
+        width: 75vw;
+        padding-right: 15px;
+    }
+    h2{
+        font-size: 21px;
+    }
+    .correct, .wrong, .question{
+        width: 70vw;
+        left: 15vw;
+    }
+    .header{
+        height: 160px;
+        padding-bottom: 10px;
+        flex-direction: column-reverse;
+    }
+    .task{
+        width: 100%;
+    }
+    .correct button, .wrong button, .question button{
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767.9px){
+    .insert-data{
+        width: 70vw;
+    }
+    .correct, .wrong, .question{
+        width: 70vw;
+        left: 15vw;
+    }
+    .header{
+        height: 170px;
+        padding-bottom: 10px;
+        flex-direction: column-reverse;
+    }
+    .task{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.9px){
+    .insert-data{
+        width: 60vw;
+    }
+    .correct, .wrong, .question{
+        height: 40vh;
+        width: 60vw;
+        top: 30vh;
+        left: 20vw;
+    }
+}
